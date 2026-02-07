@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kad Kahwin | Garden Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-loading">
+  <canvas id="confetti"></canvas>
+  <div class="petals" aria-hidden="true"></div>
+
+  <audio id="bgm" autoplay loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d37b2d8a7.mp3?filename=romantic-piano-11533.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button id="musicToggle" class="music-toggle" aria-label="Toggle music">Mute</button>
+  <div class="theme-switcher" aria-label="Tema">
+    <button class="theme-btn active" data-theme="garden">Garden</button>
+    <button class="theme-btn" data-theme="classic">Classic</button>
+    <button class="theme-btn" data-theme="modern">Modern</button>
+  </div>
+
+  <div class="intro" id="intro" aria-hidden="false">
+    <div class="door door-left"></div>
+    <div class="door door-right"></div>
+    <div class="intro-content">
+      <p class="eyebrow">Kad Kahwin</p>
+      <h1 class="couple-name glow">
+        <span>Sakinah</span>
+        <span class="amp">&</span>
+        <span>Pasangan</span>
+      </h1>
+      <p class="hero-sub">Buka jemputan untuk melihat maklumat majlis.</p>
+      <button id="openInvite" class="cta">Buka Jemputan</button>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Garden Wedding</p>
+      <h1 class="couple-name glow" data-parallax>
+        <span>Sakinah</span>
+        <span class="amp">&</span>
+        <span>Pasangan</span>
+      </h1>
+      <p class="hero-sub">Dengan penuh kesyukuran, kami menjemput anda meraikan hari bahagia kami.</p>
+      <a class="cta" href="#countdown">Buka Jemputan</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="countdown" class="section reveal">
+      <h2 class="section-title">Menuju Hari Bahagia</h2>
+      <div class="countdown" aria-live="polite">
+        <div><span id="days">00</span><small>Hari</small></div>
+        <div><span id="hours">00</span><small>Jam</small></div>
+        <div><span id="minutes">00</span><small>Minit</small></div>
+        <div><span id="seconds">00</span><small>Saat</small></div>
+      </div>
+      <p class="note">Tarikh boleh diubah di `script.js`</p>
+    </section>
+
+    <section class="section rsvp-deadline reveal">
+      <h2 class="section-title">RSVP Ditutup Dalam</h2>
+      <div class="countdown alt" aria-live="polite">
+        <div><span id="rsvpDays">00</span><small>Hari</small></div>
+        <div><span id="rsvpHours">00</span><small>Jam</small></div>
+        <div><span id="rsvpMinutes">00</span><small>Minit</small></div>
+        <div><span id="rsvpSeconds">00</span><small>Saat</small></div>
+      </div>
+      <p id="rsvpDeadlineNote" class="note"></p>
+    </section>
+
+    <section class="section invitation reveal">
+      <h2 class="section-title">Jemputan Ikhlas</h2>
+      <p class="invitation-text">
+        Dengan segala hormatnya, kami memohon doa restu dan kehadiran tuan/puan untuk menyaksikan ikatan suci
+        yang menyatukan dua hati dalam taman cinta yang mekar. Semoga langkah ini diberkati dan menjadi permulaan
+        sebuah perjalanan indah hingga ke syurga.
+      </p>
+    </section>
+
+    <section class="section dress-code reveal">
+      <h2 class="section-title">Dress Code</h2>
+      <p class="note">Tema warna lembut & elegan digalakkan.</p>
+      <div class="swatches">
+        <div class="swatch-card">
+          <span class="swatch" style="--swatch-color:#caa46f"></span>
+          <p>Gold</p>
+        </div>
+        <div class="swatch-card">
+          <span class="swatch" style="--swatch-color:#f3e6e6"></span>
+          <p>Blush</p>
+        </div>
+        <div class="swatch-card">
+          <span class="swatch" style="--swatch-color:#b8c7b1"></span>
+          <p>Sage</p>
+        </div>
+        <div class="swatch-card">
+          <span class="swatch" style="--swatch-color:#f7f1e7"></span>
+          <p>Cream</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section details reveal">
+      <h2 class="section-title">Maklumat Majlis</h2>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Akad Nikah</h3>
+          <p>Sabtu, 20 Jun 2026</p>
+          <p>10:30 pagi</p>
+          <p>Dewan Seri Mawar, Shah Alam</p>
+        </div>
+        <div class="detail-card">
+          <h3>Resepsi</h3>
+          <p>Sabtu, 20 Jun 2026</p>
+          <p>12:00 tengah hari - 4:00 petang</p>
+          <p>Taman Anggun Wedding Hall</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section map reveal">
+      <h2 class="section-title">Lokasi Majlis</h2>
+      <div class="map-actions">
+        <a class="ghost" href="https://www.google.com/maps/search/?api=1&query=Kuala%20Lumpur" target="_blank" rel="noreferrer">Google Maps</a>
+        <a class="ghost" href="https://waze.com/ul?q=Kuala%20Lumpur&navigate=yes" target="_blank" rel="noreferrer">Waze</a>
+      </div>
+      <div class="map-embed">
+        <iframe
+          title="Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15935.65807842792!2d101.6869!3d3.139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49fef2f5f2f9%3A0x9dfc9c7f9f9a7a5d!2sKuala%20Lumpur!5e0!3m2!1sen!2smy!4v1700000000000"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="section timeline reveal">
+      <h2 class="section-title">Aturcara Majlis</h2>
+      <div class="timeline-line"></div>
+      <div class="timeline-items">
+        <div class="timeline-item reveal">
+          <span class="time">10:00 pagi</span>
+          <h3>Kehadiran Tetamu</h3>
+          <p>Ketibaan & pendaftaran tetamu.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="time">10:30 pagi</span>
+          <h3>Akad Nikah</h3>
+          <p>Upacara akad bermula.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="time">12:00 tengah hari</span>
+          <h3>Jamuan Resepsi</h3>
+          <p>Jamuan & sesi bergambar.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="time">3:30 petang</span>
+          <h3>Penutup</h3>
+          <p>Ucapan terima kasih.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery reveal">
+      <h2 class="section-title">Galeri Pre-Wedding</h2>
+      <div class="slider">
+        <button class="slider-btn" id="prev">‹</button>
+        <div class="slides" id="slides"></div>
+        <button class="slider-btn" id="next">›</button>
+      </div>
+      <button id="videoTrigger" class="ghost video-trigger">Tonton Video Pre-Wedding</button>
+    </section>
+
+    <section class="section love-story reveal">
+      <h2 class="section-title">Kisah Cinta Kami</h2>
+      <div class="story-grid">
+        <article class="story-card reveal">
+          <h3>Pertemuan</h3>
+          <p>Di taman yang tenang, kami bertemu dan hati mula berbunga.</p>
+        </article>
+        <article class="story-card reveal">
+          <h3>Ikatan</h3>
+          <p>Persahabatan berubah menjadi janji yang dipelihara dengan sabar.</p>
+        </article>
+        <article class="story-card reveal">
+          <h3>Selamanya</h3>
+          <p>Kami melangkah ke hari bahagia, memohon restu dan doa semua.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section rsvp reveal">
+      <h2 class="section-title">RSVP Kehadiran</h2>
+      <div class="calendar-actions">
+        <button class="ghost" id="addAkad">Add Akad to Calendar</button>
+        <button class="ghost" id="addResepsi">Add Resepsi to Calendar</button>
+        <a class="ghost" id="downloadICS" href="#">Download ICS</a>
+      </div>
+      <form id="rsvpForm" class="rsvp-form">
+        <input type="text" name="name" placeholder="Nama penuh" required />
+        <input type="tel" name="phone" placeholder="No. telefon" required />
+        <select name="attendance" required>
+          <option value="">Kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+        </select>
+        <textarea name="message" rows="3" placeholder="Ucapan ringkas"></textarea>
+        <button type="submit" class="cta">Hantar RSVP</button>
+      </form>
+      <div class="rsvp-actions">
+        <a id="waLink" class="ghost" href="#">Pengesahan WhatsApp</a>
+      </div>
+      <p id="rsvpStatus" class="status"></p>
+    </section>
+
+    <section class="section wishes reveal">
+      <h2 class="section-title">Doa & Ucapan</h2>
+      <form id="wishForm" class="wish-form">
+        <input type="text" name="wishName" placeholder="Nama" required />
+        <select name="wishTemplate" id="wishTemplate">
+          <option value="">Pilih doa ringkas (opsyenal)</option>
+          <option value="Semoga dipermudahkan urusan dan kekal bahagia hingga syurga.">Semoga dipermudahkan urusan dan kekal bahagia hingga syurga.</option>
+          <option value="Semoga sakinah, mawaddah, warahmah mengiringi kalian.">Semoga sakinah, mawaddah, warahmah mengiringi kalian.</option>
+          <option value="Semoga rezeki melimpah dan keluarga sentiasa diberkati.">Semoga rezeki melimpah dan keluarga sentiasa diberkati.</option>
+        </select>
+        <textarea name="wishMessage" rows="3" placeholder="Titipkan doa terbaik" required></textarea>
+        <button type="submit" class="cta">Kirim Doa</button>
+      </form>
+      <div id="wishList" class="wish-list"></div>
+    </section>
+
+    <section class="section contact reveal">
+      <h2 class="section-title">Contact Person</h2>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://wa.me/601111111111" target="_blank" rel="noreferrer">
+          <span class="contact-icon">☎</span>
+          <div>
+            <strong>Pn. Salmah</strong>
+            <p>Ibu Pengantin Perempuan</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://wa.me/601222222222" target="_blank" rel="noreferrer">
+          <span class="contact-icon">☎</span>
+          <div>
+            <strong>En. Azlan</strong>
+            <p>Bapa Pengantin Lelaki</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://wa.me/601333333333" target="_blank" rel="noreferrer">
+          <span class="contact-icon">☎</span>
+          <div>
+            <strong>Hani</strong>
+            <p>Penyelaras Majlis</p>
+          </div>
+        </a>
+      </div>
+      <p class="note">Tukar nombor & nama di `index.html`.</p>
+    </section>
+  </main>
+
+  <footer class="closing" id="closing">
+    <div class="closing-inner">
+      <h2 class="glow">Terima Kasih Atas Kehadiran Anda</h2>
+      <p>Semoga hari ini menjadi kenangan yang indah buat kita semua.</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">×</button>
+    <img id="lightboxImage" alt="Galeri pre-wedding" />
+  </div>
+
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-box">
+      <button class="lightbox-close" id="videoClose" aria-label="Tutup">×</button>
+      <video id="preweddingVideo" controls preload="metadata" poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80">
+        <source src="https://cdn.pixabay.com/vimeo/658011523/forest-118877.mp4?width=1280&hash=5eaf8e6d10f4c8c0bfa1c9fd0f83f96e98d2c4bd" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
